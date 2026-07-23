@@ -5,8 +5,6 @@ preserves an editable patient timeline, and lets healthcare staff retrieve
 historical context through natural-language vector search or a tool-calling
 assistant.
 
-[Watch the original workflow demo](https://youtu.be/0tUWbR_9Olc)
-
 ## What it does
 
 - **Voice clinical capture** — browser recording and Groq Whisper transcription.
