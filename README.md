@@ -19,13 +19,13 @@ assistant.
 - **Session memory** — multi-turn conversations are retained in SQLite.
 - **Streaming UX** — the agent endpoint streams status, tool traces, and response
   tokens over Server-Sent Events.
-- **React + TypeScript agent workspace** — a modern agent interface complements
-  the enhanced original clinical workflow.
+- **Enterprise voice workspace** — a React and TypeScript capture flow provides
+  recording controls, Groq Whisper transcription, and human review before save.
 
 ## Architecture
 
 ```text
-Original clinical UI + React/TypeScript agent workspace
+Original clinical UI + React/TypeScript voice workspace
                          |
                       FastAPI
              ____________|____________
@@ -41,7 +41,8 @@ function calling provides a simpler and more direct agent loop.
 
 ## Stack
 
-- React, TypeScript, Vite
+- React, TypeScript, Vite, and Ant Design
+- HTML, Bootstrap, and JavaScript for existing clinical pages
 - FastAPI, Python
 - Groq Llama 3.3 70B and Whisper Large v3
 - Chroma vector database
@@ -85,7 +86,8 @@ Requirements: Python 3.10+ and Node.js 18+.
 4. Open:
 
    - Clinical workflow: <http://127.0.0.1:8000>
-   - React agent workspace: <http://127.0.0.1:8000/agent>
+   - React voice capture workspace: <http://127.0.0.1:8000/create>
+   - Legacy capture fallback: <http://127.0.0.1:8000/legacy/create>
    - API documentation: <http://127.0.0.1:8000/docs>
 
 ## API highlights

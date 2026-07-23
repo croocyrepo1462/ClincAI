@@ -255,7 +255,14 @@ async def chat_stream(payload: ChatRequest) -> StreamingResponse:
 
 
 legacy_frontend = Path(__file__).resolve().parents[1] / "frontend"
+create_frontend = Path(__file__).resolve().parents[1] / "frontend-react" / "dist"
 app.mount("/static", StaticFiles(directory=legacy_frontend / "static"), name="static")
+if create_frontend.exists():
+    app.mount(
+        "/create-assets",
+        StaticFiles(directory=create_frontend),
+        name="create-assets",
+    )
 
 
 @app.get("/", include_in_schema=False)
@@ -265,6 +272,13 @@ async def home_page():
 
 @app.get("/create", include_in_schema=False)
 async def create_page():
+    if create_frontend.exists():
+        return FileResponse(create_frontend / "index.html")
+    return FileResponse(legacy_frontend / "create.html")
+
+
+@app.get("/legacy/create", include_in_schema=False)
+async def legacy_create_page():
     return FileResponse(legacy_frontend / "create.html")
 
 
@@ -291,14 +305,3 @@ async def update_patient_page(patient_id: str):
 @app.get("/semantic-search", include_in_schema=False)
 async def semantic_search_page():
     return FileResponse(legacy_frontend / "semantic-search.html")
-
-
-if settings.frontend_dist.exists():
-    assets = settings.frontend_dist / "assets"
-    if assets.exists():
-        app.mount("/assets", StaticFiles(directory=assets), name="react-assets")
-
-    @app.get("/agent", include_in_schema=False)
-    @app.get("/agent/{path:path}", include_in_schema=False)
-    async def agent_ui(path: str = ""):
-        return FileResponse(settings.frontend_dist / "index.html")

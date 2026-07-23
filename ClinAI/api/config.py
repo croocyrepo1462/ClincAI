@@ -22,7 +22,6 @@ class Settings:
     chroma_path: Path = Path(
         os.getenv("CHROMA_PERSIST_DIR", str(PROJECT_DIR / "data" / "chroma"))
     )
-    frontend_dist: Path = PROJECT_DIR / "frontend-react" / "dist"
 
 
 settings = Settings()
