@@ -55,12 +55,33 @@
     .card-blue { border-top: 6px solid #4e73df; background-color: #eef3ff; }
     .card-yellow { border-top: 6px solid #f6c23e; background-color: #fff9e6; }
     .card-pink { border-top: 6px solid #e74a89; background-color: #fde8ef; }
+    .card-purple { border-top: 6px solid #6f42c1; background-color: #f2edff; }
+    .tech-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+    }
+    .tech-strip span {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      font-size: 0.8rem;
+    }
   </style>
 </head>
 <body>
   <div class="hero">
     <h1>ClinAI</h1>
     <p>Your Clinical AI Assistant for managing patient records, so you can focus on what truly matters — patient care.</p>
+    <div class="tech-strip">
+      <span>Groq Tool Calling</span>
+      <span>Chroma Vector RAG</span>
+      <span>SQLite Memory</span>
+      <span>React + TypeScript</span>
+    </div>
   </div>
   <div class="card-grid">
     <a href="/patients" class="feature-card card-blue">
@@ -77,7 +98,11 @@
     </a>
     <a href="/semantic-search" class="feature-card card-pink">
       <h5>Semantic Search</h5>
-      <p>Search patient records using natural language queries and AI-powered understanding.</p>
+      <p>Retrieve relevant patient records using Chroma vector embeddings and natural language.</p>
+    </a>
+    <a href="/agent" class="feature-card card-purple">
+      <h5>Agentic Assistant</h5>
+      <p>Use Groq function calling, session memory, and Agentic RAG to complete clinical workflows.</p>
     </a>
   </div>
 </body>
